@@ -15,8 +15,8 @@ jobs:
       
     - name: install
       run: npm i
-    - name: Build dist
-      run: gulp
+    - name: Build SASS
+      run: gulp styles
     - name: Bundle
       run: mkdir ./out && mkdir ./out/run-smart && cp -r src/css src/fonts src/img src/icons src/js  ./out/run-smart/ && cp src/index.html ./out/run-smart/
       
