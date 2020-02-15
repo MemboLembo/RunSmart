@@ -15,10 +15,10 @@ jobs:
       
     - name: install
       run: npm i
-    - name: Build SASS
+    - name: Build 
       run: gulp styles fonts icons images scripts html
     - name: Bundle
-      run: mkdir ./out && mkdir ./out/run-smart && cp -r dist/css dist/fonts dist/img dist/icons dist/js  ./out/run-smart/ && cp dist/index.html ./out/run-smart/
+      run: mkdir ./out && mv dist out/run-smart
       
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
