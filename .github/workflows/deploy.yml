@@ -1,0 +1,30 @@
+name: CD
+
+on: 
+  push:
+    branches:    
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: install
+      run: npm i
+    - name: Build dist
+      run: gulp
+    - name: Bundle
+      run: mkdir ./out && mkdir ./out/run-smart && cp -r src/css src/fonts src/img src/icons src/js  ./out/run-smart/ && cp src/index.html ./out/run-smart/
+      
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        external_repository: MemboLembo/MemboLembo.github.io
+        publish_dir: ./out
+        publish_branch: master
+        keep_files: true
