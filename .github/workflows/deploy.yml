@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: install
+    - name: Install
       run: npm i
     - name: Build 
       run: gulp styles fonts icons images scripts html
